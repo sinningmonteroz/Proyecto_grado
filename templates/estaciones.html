@@ -1,0 +1,63 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Estaciones</a></h2>
+		<p>Estaciones registradas</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Todos<span>y</span></span> <span class="day"></span><span
+				class="year">, </span></span>
+	</div>
+	<p>
+        <a href="/new_estacion">
+        <button>
+            Nueva estación
+        </button>
+        </a>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in message %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+		<table class="table  table-striped  table-hover js-dataTable-full-pagination" id="tabla">
+            <thead>
+                <tr>
+                    <th style="width: 50px;  background-color: #5DACCD; color:#fff">Id</th>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Equipo</th>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Ubicación</th>
+                    <th style="width: 30%; background-color: #5DACCD; color:#fff">Descripción</th> 
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Encargado</th>         
+                    <th style="width:20px; background-color: #5DACCD; color:#fff"></th>
+                    <th style="width:20px; background-color: #5DACCD; color:#fff"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for datos in datos %}
+                <tr>
+                    <td>{{ datos.0 }}</td>
+                    <td>{{ datos.1 }}</td>
+                    <td>{{ datos.2 }}</td>
+                    <td>{{ datos.3 }}</td>
+                    <td>{{ datos.4 }}</td>
+                    <td>
+                        <a  class="btn btn-sm btn-warning" href="/editar_estacion/{{ datos.0 }}">
+                           <i class='fa fa-edit'></i>
+                        </a>
+                    </td>
+                    <td>
+                        <i class='si si-trash'></i>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+	</p>
+
+</article>
+
+{% endblock %}

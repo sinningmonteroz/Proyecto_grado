@@ -1,0 +1,194 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container p-4">
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Reportes</a></h2>
+		<p>Muestras recientes </p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Julio<span>y</span></span> <span class="day">29</span><span
+				class="year">, 2020</span></span>
+	</div>
+	<p>
+		<canvas id="grafica" width="200" height="150"></canvas>
+		<br>
+		<canvas id="grafica2" width="200" height="150"></canvas>
+		<br>
+		<canvas id="grafica3" width="200" height="150"></canvas>
+		<br>
+		<canvas id="grafica4" width="200" height="150"></canvas>
+		<br>
+		<canvas id="grafica5" width="200" height="150"></canvas>
+
+	</p>
+	
+	{% for data2 in data2 %} {{ data2.0 }} - {{ data2.1 }} {% endfor %}
+	<hr>
+	{{ data2.0.0 }} - {{ data2.0.1 }}<br>
+	{{ data2.1.0 }} - {{ data2.1.1 }}<br>
+	{{ data2.2.0 }} - {{ data2.2.1 }}<br>
+	{{ data2.3.0 }} - {{ data2.3.1 }}<br>
+
+	<script>
+		//Humedad relativa-Valores
+		var hr4 = new String('{{ data1.0.0|tojson }}');
+		hr4 = parseFloat(hr4.replace(/[^0-9\.]/g, ''));
+		var hr3 = new String('{{ data1.1.0|tojson }}');
+		hr3 = parseFloat(hr3.replace(/[^0-9\.]/g, ''));
+		var hr2 = new String('{{ data1.2.0|tojson }}');
+		hr2 = parseFloat(hr2.replace(/[^0-9\.]/g, ''));
+		var hr1 = new String('{{ data1.3.0|tojson }}');
+		hr1 = parseFloat(hr1.replace(/[^0-9\.]/g, ''));
+
+		//Humedad relativa-fecha
+		var thr4 = new String('{{ data1.0.1|tojson }}');
+		var thr3 = new String('{{ data1.1.1|tojson }}');
+		var thr2 = new String('{{ data1.2.1|tojson }}');
+		var thr1 = new String('{{ data1.3.1|tojson }}');
+
+		//Presion atmosferica-Valores
+		var pa4 = new String('{{ data2.0.0|tojson }}');
+		pa4 = parseFloat(pa4.replace(/[^0-9\.]/g, ''));
+		var pa3 = new String('{{ data2.1.0|tojson }}');
+		pa3 = parseFloat(pa3.replace(/[^0-9\.]/g, ''));
+		var pa2 = new String('{{ data2.2.0|tojson }}');
+		pa2 = parseFloat(pa2.replace(/[^0-9\.]/g, ''));
+		var pa1 = new String('{{ data2.3.0|tojson }}');
+		pa1 = parseFloat(pa1.replace(/[^0-9\.]/g, ''));
+
+		//presion atmosferica-fecha
+		var tpa4 = new String('{{ data2.0.1|tojson }}');
+		var tpa3 = new String('{{ data2.1.1|tojson }}');
+		var tpa2 = new String('{{ data2.2.1|tojson }}');
+		var tpa1 = new String('{{ data2.3.1|tojson }}');
+
+		//Temperatura-Valores
+		var t4 = new String('{{ data3.0.0|tojson }}');
+		t4 = parseFloat(t4.replace(/[^0-9\.]/g, ''));
+		var t3 = new String('{{ data3.1.0|tojson }}');
+		t3 = parseFloat(t3.replace(/[^0-9\.]/g, ''));
+		var t2 = new String('{{ data3.2.0|tojson }}');
+		t2 = parseFloat(t2.replace(/[^0-9\.]/g, ''));
+		var t1 = new String('{{ data3.3.0|tojson }}');
+		t1 = parseFloat(t1.replace(/[^0-9\.]/g, ''));
+
+		//temperatura-fecha
+		var tt4 = new String('{{ data3.0.1|tojson }}');
+		var tt3 = new String('{{ data3.1.1|tojson }}');
+		var tt2 = new String('{{ data3.2.1|tojson }}');
+		var tt1 = new String('{{ data3.3.1|tojson }}');
+
+		//PM2-Valores
+		var pm4 = new String('{{ data4.0.0|tojson }}');
+		pm4 = parseFloat(pm4.replace(/[^0-9\.]/g, ''));
+		var pm3 = new String('{{ data4.1.0|tojson }}');
+		pm3 = parseFloat(pm3.replace(/[^0-9\.]/g, ''));
+		var pm2 = new String('{{ data4.2.0|tojson }}');
+		pm2 = parseFloat(pm2.replace(/[^0-9\.]/g, ''));
+		var pm1 = new String('{{ data4.3.0|tojson }}');
+		pm1 = parseFloat(pm1.replace(/[^0-9\.]/g, ''));
+
+		//PM2-fecha
+		var tpm4 = new String('{{ data4.0.1|tojson }}');
+		var tpm3 = new String('{{ data4.1.1|tojson }}');
+		var tpm2 = new String('{{ data4.2.1|tojson }}');
+		var tpm1 = new String('{{ data4.3.1|tojson }}');
+
+		//PM10-Valores
+		var pmm4 = new String('{{ data5.0.0|tojson }}');
+		pmm4 = parseFloat(pmm4.replace(/[^0-9\.]/g, ''));
+		var pmm3 = new String('{{ data5.1.0|tojson }}');
+		pmm3 = parseFloat(pmm3.replace(/[^0-9\.]/g, ''));
+		var pmm2 = new String('{{ data5.2.0|tojson }}');
+		pmm2 = parseFloat(pmm2.replace(/[^0-9\.]/g, ''));
+		var pmm1 = new String('{{ data5.3.0|tojson }}');
+		pmm1 = parseFloat(pmm1.replace(/[^0-9\.]/g, ''));
+
+		//PM10-fecha
+		var tpmm4 = new String('{{ data5.0.1|tojson }}');
+		var tpmm3 = new String('{{ data5.1.1|tojson }}');
+		var tpmm2 = new String('{{ data5.2.1|tojson }}');
+		var tpmm1 = new String('{{ data5.3.1|tojson }}');
+		
+		var miCanvas = document.getElementById("grafica").getContext("2d");
+		var miCanvas2 = document.getElementById("grafica2").getContext("2d");
+		var miCanvas3 = document.getElementById("grafica3").getContext("2d");
+		var miCanvas4 = document.getElementById("grafica4").getContext("2d");
+		var miCanvas5 = document.getElementById("grafica5").getContext("2d");
+
+		var grafica = new Chart(miCanvas, {
+			type: "line",
+			data: {
+				labels: [thr1, thr2, thr3, thr4],
+				datasets: [
+					{
+						label: "Gráfica humedad relativa",
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [hr1, hr2, hr3, hr4]
+					}
+				]
+			}
+		});
+		var grafica2 = new Chart(miCanvas2, {
+			type: "line",
+			data: {
+				labels: [tpa1, tpa2, tpa3, tpa4],
+				datasets: [
+					{
+						label: "Gráfica presión atmosferica",
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [pa1, pa2, pa3, pa4]
+					}
+				]
+			}
+		});
+		var grafica3 = new Chart(miCanvas3, {
+			type: "line",
+			data: {
+				labels: [tt1, tt2, tt3, tt4],
+				datasets: [
+					{
+						label: "Gráfica Temperatura",
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [t1, t2, t3, t4]
+					}
+				]
+			}
+		});
+		var grafica4 = new Chart(miCanvas4, {
+			type: "line",
+			data: {
+				labels: [tpm1, tpm2, tpm3, tpm4],
+				datasets: [
+					{
+						label: "Gráfica PM2",
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [pm1, pm2, pm3, pm4]
+					}
+				]
+			}
+		});
+		var grafica5 = new Chart(miCanvas5, {
+			type: "line",
+			data: {
+				labels: [tpmm1, tpmm2, tpmm3, tpmm4],
+				datasets: [
+					{
+						label: "Gráfica PM10",
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [pmm1, pmm2, pmm3, pmm4]
+					}
+				]
+			}
+		});
+	</script>
+</article>
+</div>
+{% endblock %}

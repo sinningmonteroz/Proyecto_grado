@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Inicio
+    </title>
+<script src="assets/Chart.js"></script>
+</head>
+
+<body>
+<canvas id="grafica" width="200" height="150"></canvas>
+<br>
+<canvas id="grafica2" width="200" height="150"></canvas>
+</body>
+
+<script>
+    var miCanvas = document.getElementById("grafica").getContext("2d");
+    var miCanvas2 = document.getElementById("grafica2").getContext("2d");
+    
+    var grafica = new Chart (miCanvas, {
+        type:"bar",
+        data:{
+            labels:["Mayo","Junio","Julio","Agosto","Septiembre"],
+            datasets:[
+                {
+                    label: "Gráfica de humedad relativa",
+                    backgroundColor: "rgb(0,0,0)",
+                    borderColor: "rgb(0,255,0)", 
+                    data:[12,20,25,23,15]
+                }
+            ]
+        }
+    });
+    var grafica2 = new Chart (miCanvas2, {
+        type:"bar",
+        data:{
+            labels:["Mayo","Junio","Julio","Agosto","Septiembre"],
+            datasets:[
+                {
+                    label: "Gráfica presión atmosferica",
+                    backgroundColor: "rgb(0,0,0)",
+                    borderColor: "rgb(0,255,0)", 
+                    data:[12,20,25,23,15]
+                }
+            ]
+        }
+    });
+</script>
+</html>

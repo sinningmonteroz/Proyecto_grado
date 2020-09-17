@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Bienvenido a nuestra web de monitoreo!</a></h2>
+		<p>Puedes revisar la información más reciente sobre el estado del ecosistema.</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Julio<span>y</span></span> <span class="day">29</span><span
+				class="year">, 2014</span></span>
+	</div>
+	<a href="#" class="image featured"><img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt="" /></a>
+
+	<p>
+		<strong>La Caimanera</strong> no solo es un lugar atractivo y estratégico por su biodiversidad, sino que además
+		sirve de sustento en actividades socioeconómicas para las comunidades que habitan en sus cercanías. Los
+		habitantes pueden obtener madera, mariscos, peces y durante la temporada turística, estos ofrecen diferentes
+		servicios de entreteniemiento a los turistas.
+	</p>
+</article>
+{% endblock %}

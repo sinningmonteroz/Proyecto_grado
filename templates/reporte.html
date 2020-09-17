@@ -1,0 +1,37 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<div class="container p-4">
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Reportes</a></h2>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Buscar<span></span></span> <span class="day"></span><span
+				class="year"> </span></span>
+	</div>
+	
+	<form method="POST" action="/mostrar_reporte">
+		Estación: 
+		<select name="estacion">
+			{% for datos in datos %}<option value="{{ datos.0 }}">{{ datos.1 }} / {{ datos.2 }}</option>{% endfor %}
+		</select>
+		Año:
+		<input type="text" name="anio">
+		Medidor: 
+		<select name="medidor">
+			<option value="hm">Humedad Relativa</option>
+			<option value="pa">Presión Atmosférica</option> 
+			<option value="t">Temperatura</option>  
+			<option value="pm2">PM2</option> 
+			<option value="pm10">PM10</option> 
+		</select>
+		<br>
+		<input type="submit" value="Buscar" name="buscar">
+	</form>
+	
+	
+	
+</article>
+</div>
+{% endblock %}

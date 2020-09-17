@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Iniciar Sesion!</a></h2>
+		<p>Ingrese su datos.</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Login<span>y</span></span>
+    </div>
+    <form method="POST" action="/comprobar">
+        <input type="text" class="text" name="identificacion" placeholder="Usuario" /><br>
+        <input type="password" class="text" name="password" placeholder="Contraseña" /><br>
+        <button type="submit" name="login">
+            Confirmar
+        </button>  
+        
+    </form>
+    
+        
+    
+	
+</article>
+{% endblock %}

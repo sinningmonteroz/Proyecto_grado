@@ -1,0 +1,30 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Nuevo Usuario</a></h2>
+		<p>Datos del usuario</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">New<span>y</span></span> <span class="day"></span><span
+				class="year">, </span></span>
+    </div>
+    
+	<p>
+        <form method="POST" action="/add_user">
+            <input type="text" class="text" name="nombres" placeholder="Nombres" /><br>
+            <input type="text" class="text" name="apellidos" placeholder="Apellidos" /><br>
+            <input type="text" class="text" name="identificacion" placeholder="Usuario" /><br>
+            <input type="password" class="text" name="password" placeholder="Contraseña" /><br>
+            <input type="text" class="text" name="email" placeholder="Correo" /><br>
+            <input type="text" class="text" name="celular" placeholder="Celular" /><br>
+            <button type="submit" name="login">
+                Confirmar
+            </button>
+        </form>
+	</p>
+
+</article>
+
+{% endblock %}

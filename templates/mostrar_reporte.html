@@ -1,0 +1,81 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<div class="container p-4">
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Reportes</a></h2>
+		<p>Reporte anual</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Gráfica<span></span></span> <span class="day"></span><span
+				class="year"></span></span>
+	</div>
+	<p>
+
+		<canvas id="grafica" width="500" height="400"></canvas>
+    </p>
+    
+	<script>
+		//Valores
+		var mes1 = new String('{{ datos.0.1|tojson }}');
+		mes1 = parseFloat(mes1.replace(/[^0-9\.]/g, ''));
+		var mes2 = new String('{{ datos.1.1|tojson }}');
+		mes2 = parseFloat(mes2.replace(/[^0-9\.]/g, ''));
+		var mes3 = new String('{{ datos.2.1|tojson }}');
+		mes3 = parseFloat(mes3.replace(/[^0-9\.]/g, ''));
+		var mes4 = new String('{{ datos.3.1|tojson }}');
+		mes4 = parseFloat(mes4.replace(/[^0-9\.]/g, ''));
+        var mes5 = new String('{{ datos.4.1|tojson }}');
+		mes5 = parseFloat(mes5.replace(/[^0-9\.]/g, ''));
+        var mes6 = new String('{{ datos.5.1|tojson }}');
+		mes6 = parseFloat(mes6.replace(/[^0-9\.]/g, ''));
+        var mes7 = new String('{{ datos.6.1|tojson }}');
+		mes7 = parseFloat(mes7.replace(/[^0-9\.]/g, ''));
+        var mes8 = new String('{{ datos.7.1|tojson }}');
+		mes8 = parseFloat(mes8.replace(/[^0-9\.]/g, ''));
+        var mes9 = new String('{{ datos.8.1|tojson }}');
+		mes9 = parseFloat(mes9.replace(/[^0-9\.]/g, ''));
+        var mes10 = new String('{{ datos.9.1|tojson }}');
+		mes10 = parseFloat(mes10.replace(/[^0-9\.]/g, ''));
+        var mes11 = new String('{{ datos.10.1|tojson }}');
+		mes11 = parseFloat(mes11.replace(/[^0-9\.]/g, ''));
+        var mes12 = new String('{{ datos.11.1|tojson }}');
+		mes12 = parseFloat(mes12.replace(/[^0-9\.]/g, ''));
+
+		//Datos
+		var t1 = new String('{{ datos.0.0|tojson }}');
+		var t2 = new String('{{ datos.1.0|tojson }}');
+		var t3 = new String('{{ datos.2.0|tojson }}');
+		var t4 = new String('{{ datos.3.0|tojson }}');
+        var t5 = new String('{{ datos.4.0|tojson }}');
+        var t6 = new String('{{ datos.5.0|tojson }}');
+        var t7 = new String('{{ datos.6.0|tojson }}');
+        var t8 = new String('{{ datos.7.0|tojson }}');
+        var t9 = new String('{{ datos.8.0|tojson }}');
+        var t10 = new String('{{ datos.9.0|tojson }}');
+        var t11 = new String('{{ datos.10.0|tojson }}');
+        var t12 = new String('{{ datos.11.0|tojson }}');
+
+        var titulo = new String('{{ titulo|tojson }}');
+		
+		var miCanvas = document.getElementById("grafica").getContext("2d");
+
+		var grafica = new Chart(miCanvas, {
+			type: "line",
+			data: {
+				labels: [t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12],
+				datasets: [
+					{
+						label: titulo,
+						backgroundColor: "rgb(0,0,0)",
+						borderColor: "rgb(0,255,0)",
+						data: [mes1, mes2, mes3, mes4, mes5, mes6, mes7, mes8, mes9, mes10, mes11, mes12]
+					}
+				]
+			}
+		});
+	</script>
+</article>
+</div>
+{% endblock %}

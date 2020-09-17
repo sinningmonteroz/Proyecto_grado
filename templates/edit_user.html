@@ -1,0 +1,30 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">Editar Usuario</a></h2>
+		<p>Datos del usuario</p>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Edit<span>y</span></span> <span class="day"></span><span
+				class="year">, </span></span>
+    </div>
+    
+	<p>
+        <form method="POST" action="/save/{{ usuario.0 }}">
+            <input type="text" class="text" name="nombres" placeholder="Nombres" value="{{ usuario.1 }}"/><br>
+            <input type="text" class="text" name="apellidos" placeholder="Apellidos" value="{{ usuario.2 }}"/><br>
+            <input type="text" class="text" name="identificacion" placeholder="Usuario" value="{{ usuario.3 }}"/><br>
+            <input type="password" class="text" name="password" placeholder="Contraseña" value="{{ usuario.4 }}"/><br>
+            <input type="text" class="text" name="email" placeholder="Correo" value="{{ usuario.5 }}"/><br>
+            <input type="text" class="text" name="celular" placeholder="Celular" value="{{ usuario.6 }}"/><br>
+            <button type="submit" name="login">
+                Guardar
+            </button>
+        </form>
+	</p>
+
+</article>
+
+{% endblock %}

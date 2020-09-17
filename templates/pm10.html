@@ -1,0 +1,51 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+
+<article class="box post post-excerpt">
+	<header>
+		<h2><a href="#">PM10</a></h2>
+	</header>
+	<div class="info">
+		<span class="date"><span class="month">Todos<span>y</span></span> <span class="day"></span><span
+				class="year">, </span></span>
+	</div>
+	<p>
+        
+		<table class="table  table-striped  table-hover js-dataTable-full-pagination" id="tabla">
+            <thead>
+                <tr>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Equipo</th>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Lugar</th>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Valor</th>
+                    <th style="width: 20%; background-color: #5DACCD; color:#fff">Fecha/Hora</th>       
+                    <th style="width:20px; background-color: #5DACCD; color:#fff"></th>
+                    <th style="width:20px; background-color: #5DACCD; color:#fff"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for datos in datos %}
+                <tr>
+                    <td>{{ datos.1 }}</td>
+                    <td>{{ datos.2 }}</td>
+                    <td>{{ datos.3 }}</td>
+                    <td>{{ datos.4 }}</td>
+                    <td>
+                        <a  class="btn btn-sm btn-warning" href="/editar">
+                           <i class='fa fa-edit'></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a  class="btn btn-sm btn-danger" onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="/eliminar">
+                            <i class='si si-trash'></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+	</p>
+
+</article>
+
+{% endblock %}
